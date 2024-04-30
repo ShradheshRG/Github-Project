@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  
+</head>
+
+<body>
+    
+  <div data-role="page" id="page1">
+      
+    <div data-role="header" id="header1">
+      <h1> Practice website</h1>
+    </div>
+
+    <div data-role="main">
+      Main content should be here
+    </div>
+
+    <div>
+      <a href="#page2">Go to next page</a>
+    </div>
+
+    <center>
+      <div style="width: 30%;">
+      
+        <label for="opinion">Enter Text:</label> 
+        <textarea name="Geeks" id="opinion"></textarea> 
+        
+      </div>
+    </center>
+
+    <div style="width: 20%;">
+      <label for="name">Enter full name : </label>
+      <input type="text" id="name" placeholder="Enter name">
+    </div>
+
+    <div data-role="footer">
+      this is footer of this web page
+    </div>
+
+  </div>
+
+  <div data-role="page" id="page2">
+    
+    <div data-role="header" id="header2"> 
+     <h1> Header of 2nd page</h1>
+    </div>
+
+    <button data-role="button" id="button">Click for web name</button>
+    <div id="addWebName"></div>
+  </div>
+
+
+  <script>
+
+    $(document).ready(()=>{
+
+      // adding backbtn on page 2
+      $("#header2").toolbar({
+        addBackBtn:true,  // to go to privious page
+        backBtnText:"Previous page",  // text inside back btn
+        backBtnTheme:'b'  // color of button
+      })
+
+      $("#header2").toolbar({
+        classes:{
+          name:"Geeks for Geeks" // creating numltiple classes
+        }
+      })
+
+      $("#button").click(()=>{
+        var a = $("#header2") 
+                    .toolbar("option", "classes.name"); // getting string value htnl in a
+  
+                $("#addWebName").html(a);  // adding new div on clicking
+      })
+
+
+
+      $("#opinion").textinput({
+        autogrow:true, // applied to text-area as text inside increase area grows
+        keyupTimeoutBuffer: 150  //keyupTimeoutBuffer Option to set the amount of time (in milliseconds) to wait between the occurrence of a keystroke and the resizing of the textarea element. If another keystroke occurs within this time, the resizing is postponed by another period of time of the same length.
+
+      })
+      $("#name").textinput({
+        clearBtn:true,  // clear option availabel
+        corners:false, //rmove corners from input text
+        // disabled:true  // makes input box disabled 
+        // enahanced:true,
+        // mini:true // display compact version ,reduce height
+        // preventFocusZoom: true //prevent the device from focusing on the input element when the element receives the focus.
+      })
+    })
+  </script>
+</body>
+
+</html>
